@@ -39,7 +39,7 @@ c.off();
 
 Register event.
 
-`type`: `click`, `customEvent`
+`type`: `click`, `customEvent` ...
 
 `selector`: Selector, `document` or `window`. Default: `document`.
 
