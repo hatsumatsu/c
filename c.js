@@ -58,14 +58,13 @@ export default class C {
     }
 
     off(type, selector = null, handler = null, options = null) {
-        console.log(this.events);
-
         // why while?
         // https://stackoverflow.com/a/24813338/2799523
         let index = this.events.length - 1;
         while (index >= 0) {
             let event = this.events[index];
 
+            /*
             console.log('comparing type', event['type'], type, !type || event['type'] == type);
             console.log('comparing selector', event['selector'], selector, !selector || event['selector'] == selector);
             console.log(
@@ -80,6 +79,7 @@ export default class C {
                 options,
                 !options || JSON.stringify(event['options']) == JSON.stringify(options)
             );
+            */
 
             if (
                 (!type || event['type'] === type) &&
@@ -94,8 +94,6 @@ export default class C {
 
             index--;
         }
-
-        console.log(this.events);
 
         return this;
     }
