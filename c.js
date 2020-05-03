@@ -57,21 +57,6 @@ export default class C {
         return this;
     }
 
-    trigger(type, data = {}, element = this.root) {
-        if (!type) {
-            return this;
-        }
-
-        let _event = new CustomEvent(type, {
-            bubbles: true,
-            detail: data,
-        });
-
-        element.dispatchEvent(_event);
-
-        return this;
-    }
-
     off(type, selector = null, handler = null, options = null) {
         console.log(this.events);
 
@@ -111,6 +96,21 @@ export default class C {
         }
 
         console.log(this.events);
+
+        return this;
+    }
+
+    trigger(type, data = {}, element = this.root) {
+        if (!type) {
+            return this;
+        }
+
+        let _event = new CustomEvent(type, {
+            bubbles: true,
+            detail: data,
+        });
+
+        element.dispatchEvent(_event);
 
         return this;
     }
