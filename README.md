@@ -39,9 +39,12 @@ c.off();
 
 Register event.
 
-`type`: `click`, `customEvent` ...
+`type`: `click`, `customEvent`
+
 `selector`: Selector, `document` or `window`. Default: `document`.
+
 `handler`: `function( event )`. For delegated events find the event target in `event.actualTarget`.
+
 `options`: Options passed to addEventListener.
 
 ##### `off(type, selector = null, handler = null, options = null)`
@@ -49,8 +52,11 @@ Register event.
 Remove events registered with this instance.
 
 `off( type, selector, handler, options )`: Remove events that match all parameters.
+
 `off( type, selector )`: Remove events registered to the elements matching the selector.
+
 `off( type )`: Remove events of given type.
+
 `off()`: Remove all events registered with this instance.
 
 ##### `trigger(type, data = {}, element = root)`
