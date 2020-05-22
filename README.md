@@ -35,7 +35,7 @@ c.off();
 
 ### API
 
-##### `on( type, selector = document, handler = () => {}, options = {} )`
+#### `on( type, selector = document, handler = () => {}, options = {} )`
 
 Register event.
 
@@ -47,7 +47,11 @@ Register event.
 
 `options`: Options passed to addEventListener.
 
-##### `off(type, selector = null, handler = null, options = null)`
+#### `once( type, selector = document, handler = () => {}, options = {} )`
+
+Same as `.on()` but triggers only once.
+
+#### `off(type, selector = null, handler = null, options = null)`
 
 Remove events registered with this instance.
 
@@ -59,6 +63,6 @@ Remove events registered with this instance.
 
 `off()`: Remove all events registered with this instance.
 
-##### `trigger(type, data = {}, element = root)`
+#### `trigger(type, data = {}, element = root)`
 
 Trigger `type` event. `data` object and event target are optional.

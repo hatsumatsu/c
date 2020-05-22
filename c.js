@@ -19,7 +19,7 @@ export default class C {
         this.events = [];
     }
 
-    on(type, selector = document, handler = () => {}, options = {}) {
+    on(type, selector = document, handler = () => {}, options = {}, once = false) {
         if (!type) {
             return this;
         }
@@ -28,23 +28,33 @@ export default class C {
         _event['type'] = type;
         _event['selector'] = selector;
         _event['options'] = options;
+        _event['once'] = once;
         _event['originalHandler'] = handler;
         _event['handler'] = () => {
             // if no selector or selector is root element,
             // directly call handler
             if (!selector || selector === document || selector === window) {
                 handler.call(this, event);
+                if (once) {
+                    this.off(type, selector, _event['originalHandler'], options);
+                }
                 // if selector is present and event is not bubbled up o the root
             } else if (event.target !== document) {
                 // target === selector
                 if (event.target.matches(selector)) {
                     handler.call(this, event);
+                    if (once) {
+                        this.off(type, selector, _event['originalHandler'], options);
+                    }
 
                     // target is child of selector AND we are not in the capture phase
                 } else if (event.target.closest && event.target.closest(selector) && !options.capture) {
                     event.actualTarget = event.target.closest(selector);
 
                     handler.call(this, event);
+                    if (once) {
+                        this.off(type, selector, _event['originalHandler'], options);
+                    }
                 }
             }
         };
@@ -55,6 +65,10 @@ export default class C {
         this.events.push(_event);
 
         return this;
+    }
+
+    once(type, selector = document, handler = () => {}, options = {}) {
+        this.on(type, selector, handler, options, true);
     }
 
     off(type, selector = null, handler = null, options = null) {
