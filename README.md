@@ -49,7 +49,7 @@ Register event.
 
 #### `once( type, selector = document, handler = () => {}, options = {} )`
 
-Same as `.on()` but triggers only once.
+Same as `on()` but triggers only once.
 
 #### `off(type, selector = null, handler = null, options = null)`
 

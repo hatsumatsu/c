@@ -117,12 +117,12 @@ export default class C {
             return this;
         }
 
-        let _event = new CustomEvent(type, {
-            bubbles: true,
-            detail: data,
-        });
-
-        element.dispatchEvent(_event);
+        element.dispatchEvent(
+            new CustomEvent(type, {
+                bubbles: true,
+                detail: data,
+            })
+        );
 
         return this;
     }
