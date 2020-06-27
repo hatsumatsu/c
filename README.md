@@ -44,7 +44,7 @@ Listeners are attached to the `root` element. Default: `document`.
 
 Add event to the instance.
 
-`type`: Native or custom event name like `click`, `customEvent` ...
+`type`: Native or custom event name like `click`, `myModule/ready` ...
 
 `selector`: CSS selector, `document` or `window`. Default: `document`.
 
@@ -62,7 +62,7 @@ Remove event(s) from the instance.
 
 `off( type, selector, handler, options )`: Remove events that match all parameters.
 
-`off( type, selector )`: Remove events registered with `selector`.
+`off( type, selector )`: Remove events registered with `type` and `selector`.
 
 `off( type )`: Remove events registered with `type`.
 
