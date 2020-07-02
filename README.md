@@ -10,6 +10,14 @@
 
 Tiny event helper with a familiar fluent API.
 
+### Features
+
++ Supports native and custom events
++ Event delegation by default
++ Batch removal of events by type, selector or C instance
++ Available as ES6 module 
+
+
 ### Installation
 
 `npm install @superstructure.net/c`
@@ -21,14 +29,16 @@ import C from '@superstructure.net/c';
 
 let c = new C();
 
-
+// add events
 c
     .on( 'click', '.ui-element', onClick )
     .on( 'mouseenter', '.ui-element', onMouseEnter, { capture: true } )
-    .on( 'module/change', null, onChange );
+    .on( 'myModule/ready', null, onModuleReady );
 
-c.trigger( 'module/change', data );
+// trigger custom event
+c.trigger( 'myModule/ready', data );
 
+// remove all events
 c.off();
 
 ```
@@ -50,7 +60,7 @@ Add event to the instance.
 
 `handler`: `( event ) => {}`. Event handler. For delegated events find the event target in `event.actualTarget`.
 
-`options`: Options passed to native `addEventListener()`.
+`options`: Options passed to native `addEventListener()`. Optional.
 
 #### `once( type, selector = document, handler = () => {}, options = {} )`
 
@@ -68,6 +78,6 @@ Remove event(s) from the instance.
 
 `off()`: Remove all events added to this instance.
 
-#### `trigger(type, data = {}, element = root)`
+#### `trigger(type, data = {}, target = root)`
 
 Trigger event of `type`. `data` and event target are optional.
