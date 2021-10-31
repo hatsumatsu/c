@@ -12,15 +12,17 @@ Tiny event helper with a familiar fluent API.
 
 ### Features
 
-+ Supports native and custom events
-+ Event delegation by default
-+ Batch removal of events by type, selector or C instance
-+ Available as ES6 module 
-
+-   Supports native and custom events
+-   Event delegation by default
+-   Batch removal of events by type, selector or C instance
+-   Available as ES6 module
 
 ### Installation
 
 `npm install @superstructure.net/c`
+
+> Note: This library comes as es6 module only.
+> If you use a transpiler like babel or swc make sure to include `/node_modules/@superstructure.net/c` in your transpiler’s config.
 
 ### Usage
 
@@ -45,9 +47,9 @@ c.off();
 
 ### API
 
-#### `new C( root = document )` 
+#### `new C( root = document )`
 
-Create a new C instance. 
+Create a new C instance.
 Listeners are attached to the `root` element. Default: `document`.
 
 #### `on( type, selector = document, handler = () => {}, options = {} )`
